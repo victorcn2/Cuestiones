@@ -24,3 +24,15 @@ consonantes
 
 ```
 
+```{r}
+library(readr)
+library(lubridate)
+library(tidyverse)
+Nosotros <- read_delim("Nosotros.tsv", delim = "\t", 
+    escape_double = FALSE, trim_ws = TRUE)
+
+Nosotros<-Nosotros%>%mutate(suma=as.numeric(dmy("03-02-2021")-as.numeric(dmy(Nosotros$`FechaNac(DD-MM-YYY)`))))
+suma<-sum(Nosotros$suma/365)
+suma
+```
+
